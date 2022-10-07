@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -42,6 +43,12 @@ extension ViewController: UITableViewDataSource {
         cell.cellLabel.text = rows[indexPath.section][indexPath.row]
         cell.cellImageView.image = #imageLiteral(resourceName: "logo_girardota_url.png")
         return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You are selected \(rows[indexPath.section][indexPath.row])")
     }
 }
 
