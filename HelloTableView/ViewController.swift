@@ -38,8 +38,14 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = rows[indexPath.section][indexPath.row]
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell") as! MyTableViewCell
+        cell.cellLabel.text = rows[indexPath.section][indexPath.row]
+        cell.cellImageView.image = #imageLiteral(resourceName: "logo_girardota_url.png")
         return cell
     }
+}
+
+class MyTableViewCell: UITableViewCell {
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var cellLabel: UILabel!
 }
